@@ -2,7 +2,6 @@ import logging
 from typing import Any
 from gi.repository import Gtk, Gdk
 
-from ulauncher.utils.Theme import Theme
 from ulauncher.utils.display import get_monitor_scale_factor
 from ulauncher.search.Query import Query
 
@@ -74,8 +73,7 @@ class ResultItemWidget(Gtk.EventBox):
             iconWgt.set_from_pixbuf(icon)
 
     def set_name_highlighted(self, is_selected: bool = False) -> None:
-        colors = Theme.get_current().get_matched_text_hl_colors()
-        color = colors['when_selected'] if is_selected else colors['when_not_selected']
+        color = '#2c74cc' if is_selected else '#2c74cc'
         self.set_name(self.item_object.get_name_highlighted(self.query, color) or self.item_object.get_name())
 
     # pylint: disable=arguments-differ

@@ -26,7 +26,6 @@ from ulauncher.api.server.ExtensionManifest import ExtensionManifestError
 from ulauncher.api.server.ExtensionDownloader import (ExtensionDownloader, ExtensionIsUpToDateError)
 from ulauncher.api.shared.errors import UlauncherAPIError, ErrorName
 from ulauncher.api.server.ExtensionServer import ExtensionServer
-from ulauncher.utils.Theme import themes, Theme, load_available_themes
 from ulauncher.utils.decorator.glib_idle_add import glib_idle_add
 from ulauncher.utils.mypy_extensions import TypedDict
 from ulauncher.utils.decorator.run_async import run_async

@@ -32,7 +32,6 @@ from ulauncher.utils.display import get_current_screen_geometry, get_primary_scr
 from ulauncher.utils.image_loader import load_image
 from ulauncher.utils.version_cmp import gtk_version_is_gte
 from ulauncher.utils.desktop.notification import show_notification
-from ulauncher.utils.Theme import Theme, load_available_themes
 from ulauncher.search.apps.app_watcher import start as start_app_watcher
 from ulauncher.search.Query import Query
 from ulauncher.ui.windows.Builder import Builder
@@ -95,7 +94,6 @@ class UlauncherWindow(Gtk.Window, WindowHelper):
 
         self.fix_window_width()
         self.position_window()
-        self.init_theme()
 
         # this will trigger to show frequent apps if necessary
         self.show_results([])
@@ -215,16 +213,12 @@ class UlauncherWindow(Gtk.Window, WindowHelper):
             self.set_size_request(width + 2, height)
 
     def init_theme(self):
-        load_available_themes()
-        theme = Theme.get_current()
-        theme.clear_cache()
 
         # removing window shadow solves issue with DEs without a compositor (#230)
         if get_options().no_window_shadow:
             self.window_body.get_style_context().add_class('no-window-shadow')
 
         self._render_prefs_icon()
-        self.init_styles(theme.compile_css())
 
     def activate_preferences(self, page='preferences'):
         """
